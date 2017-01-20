@@ -67,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
         frameLayout = (FrameLayout) findViewById(R.id.frame);
         trueBtn = (Button) findViewById(R.id.trueBtn);
         falseBtn = (Button) findViewById(R.id.falseBtn);
-
+        falseBtn.setEnabled(false);
+        trueBtn.setEnabled(false);
         threadPoolExecutor = Executors.newSingleThreadExecutor();
         trueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
 //                Future longRunningTaskFuture = threadPoolExecutor.submit(final_handlerTask);
 //                longRunningTaskFuture.cancel(true);
 //                final_handlerTask.run();
+                falseBtn.setEnabled(false);
+                trueBtn.setEnabled(false);
                 if(hexColorSelected == nameColorSelected){
                     score++;
                     scoreTxt.setText("Score: " + score);
@@ -92,6 +95,8 @@ public class MainActivity extends AppCompatActivity {
 //                Future longRunningTaskFuture = threadPoolExecutor.submit(final_handlerTask);
 //                longRunningTaskFuture.cancel(true);
 //                final_handlerTask.run();
+                falseBtn.setEnabled(false);
+                trueBtn.setEnabled(false);
                 if(hexColorSelected == nameColorSelected){
                     score--;
                     scoreTxt.setText("Score: " + score);
@@ -108,6 +113,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
+                    falseBtn.setEnabled(true);
+                    trueBtn.setEnabled(true);
                     final_handler = new Handler();
                     final_handlerTask = new Runnable() {
                         @Override
@@ -151,6 +158,8 @@ public class MainActivity extends AppCompatActivity {
                                         m_handler.removeCallbacks(m_handlerTask);
                                         m_handlerTask3.run();
                                         m_handlerTask2.run();
+                                        falseBtn.setEnabled(true);
+                                        trueBtn.setEnabled(true);
                                     }
                                     m_handler.postDelayed(m_handlerTask, 1000);
                                 }
@@ -159,6 +168,10 @@ public class MainActivity extends AppCompatActivity {
                         }
                     };
                     final_handlerTask.run();
+                }
+                else {
+                    falseBtn.setEnabled(false);
+                    trueBtn.setEnabled(false);
                 }
             }
         });
