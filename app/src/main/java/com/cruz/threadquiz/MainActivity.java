@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
 //                final_handlerTask.run();
                 falseBtn.setEnabled(false);
                 trueBtn.setEnabled(false);
+                timeleft = 0;
                 if(hexColorSelected == nameColorSelected){
                     score++;
                     scoreTxt.setText("Score: " + score);
@@ -97,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
 //                final_handlerTask.run();
                 falseBtn.setEnabled(false);
                 trueBtn.setEnabled(false);
+                timeleft = 0;
                 if(hexColorSelected == nameColorSelected){
                     score--;
                     scoreTxt.setText("Score: " + score);
